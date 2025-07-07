@@ -7,6 +7,7 @@ const myTheme = {
   colors: {
     ...DarkTheme.colors,
     primary: "white", // use this to change the color of nav bar icons
+    card: "#101010", // use this to change the color of background
   },
 };
 
