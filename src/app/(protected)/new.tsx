@@ -1,23 +1,18 @@
 import { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  Pressable,
-  KeyboardAvoidingView,
-  Platform,
-} from "react-native";
+import { View, Text, TextInput, Pressable, Platform } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 export default function NewPostScreen() {
   const [text, setText] = useState("");
 
   return (
-    <SafeAreaView edges={["bottom"]} className="p-4">
-      <KeyboardAvoidingView
-        className="flex-1"
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        keyboardVerticalOffset={Platform.OS === "ios" ? 140 : 0}
+    <SafeAreaView edges={["bottom"]} className="p-4 flex-1">
+      <KeyboardAwareScrollView
+        extraScrollHeight={5}
+        enableOnAndroid={true}
+        keyboardShouldPersistTaps="handled"
+        contentContainerStyle={{ flex: 1 }}
       >
         <Text className="text-white text-lg font-bold">username</Text>
 
@@ -39,7 +34,7 @@ export default function NewPostScreen() {
             <Text className="text-black font-bold">Post</Text>
           </Pressable>
         </View>
-      </KeyboardAvoidingView>
+      </KeyboardAwareScrollView>
     </SafeAreaView>
   );
 }
